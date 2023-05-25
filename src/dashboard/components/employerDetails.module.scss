@@ -1,0 +1,77 @@
+$primary: #8440ba;
+$background: hsl(240, 3%, 82%);
+
+body {
+  background-color: $background;
+}
+
+.details_functions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 2rem;
+  margin-left: 7rem;
+  .button1 {
+    width: 4rem;
+    height: 2rem;
+    background-color: $primary;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    margin-left: 2rem;
+  }
+  .link {
+    text-decoration: none;
+    color: white;
+  }
+  input {
+    margin-left: 4rem;
+    height: 2rem;
+    border: 1px solid rgb(158, 160, 158);
+    border-radius: 4px;
+    padding: 1rem;
+  }
+  .search_container {
+    background-color: $primary;
+    padding: 6px;
+    margin-left: 4px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .search_icon {
+    color: white;
+    font-size: 18px;
+  }
+}
+
+// EMPLOYEE LISTR
+
+.list_container {
+  background-color: white;
+  padding: 1rem 1rem 1rem 1rem;
+  width: 50vw;
+  margin-left: 6rem;
+  margin-top: 2rem;
+  border-radius: 5px;
+  .list_details {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: white;
+    color: rgb(88, 85, 85);
+
+    padding: 0.5rem;
+    border-bottom: 1px solid rgb(168, 162, 162);
+    border-radius: 2px;
+  }
+
+  h3 {
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+  }
+}

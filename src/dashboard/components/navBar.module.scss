@@ -1,0 +1,32 @@
+$primary: #8440ba;
+
+.nave {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $primary;
+  padding: 1rem;
+  color: white;
+
+  h2 {
+    font-size: 18px;
+  }
+
+  h4 {
+    transform: translateX(11rem);
+    font-weight: 300;
+  }
+
+  .img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 55%;
+    background-color: antiquewhite;
+    transform: translateX(16rem);
+  }
+
+  .bell {
+    transform: translateX(7rem);
+  }
+}
