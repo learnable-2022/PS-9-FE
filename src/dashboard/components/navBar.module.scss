@@ -11,11 +11,12 @@ $primary: #8440ba;
 
   h2 {
     font-size: 18px;
+    font-weight: 500;
   }
 
   h4 {
-    transform: translateX(11rem);
-    font-weight: 300;
+    transform: translateX(13rem);
+    font-weight: 400;
   }
 
   .img {
@@ -23,7 +24,7 @@ $primary: #8440ba;
     height: 3rem;
     border-radius: 55%;
     background-color: antiquewhite;
-    transform: translateX(16rem);
+    transform: translateX(19rem);
   }
 
   .bell {

@@ -7,6 +7,7 @@ import WalletIcon from "@mui/icons-material/Wallet";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
+import SettingsIcon from "@mui/icons-material/Settings";
 import ReactDOM from "react-dom";
 import {
   Route,
@@ -78,10 +79,10 @@ export default function Home() {
               </Link>
             </div>
             <div className={styles.analytics}>
-              <TrendingDownIcon className={styles.analytics_icon} />
+              <SettingsIcon className={styles.analytics_icon} />
 
               <Link className={styles.link} to="/analytics">
-                <h2> Analytics</h2>
+                <h2> Settings</h2>
               </Link>
             </div>
             <div className={styles.logout}>
