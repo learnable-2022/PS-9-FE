@@ -1,6 +1,8 @@
 $primary: #8440ba;
 $background: hsl(240, 3%, 82%);
-
+* {
+  margin-left: 0;
+}
 body {
   background-color: $background;
 }
@@ -73,5 +75,79 @@ body {
     font-size: 13px;
     font-style: normal;
     font-weight: 400;
+  }
+}
+
+// RESPONSIVENESS
+
+@media (max-width: 360px) {
+  .details_functions {
+    flex-direction: column;
+    margin-left: 0rem;
+    justify-content: flex-start;
+    .button1 {
+      margin-left: 0rem;
+      width: 85vw;
+      margin-top: 0.5rem;
+    }
+    .link {
+      margin-left: 0px;
+    }
+    input {
+      margin-left: 0rem;
+      margin-top: 0.5rem;
+      width: 85vw;
+    }
+    .search_container {
+      width: 85vw;
+      margin-top: 0.5rem;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .list_container {
+    width: 90vw;
+    margin-left: 1rem;
+    overflow-x: scroll;
+    .list_details {
+      width: 190vw;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .details_functions {
+    flex-direction: column;
+    margin-left: 0rem;
+    justify-content: flex-start;
+    .button1 {
+      margin-left: 0rem;
+      width: 85vw;
+      margin-top: 0.5rem;
+    }
+    .link {
+      margin-left: 0px;
+    }
+    input {
+      margin-left: 0rem;
+      margin-top: 0.5rem;
+      width: 85vw;
+    }
+    .search_container {
+      width: 85vw;
+      margin-top: 0.5rem;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .list_container {
+    width: 90vw;
+    margin-left: 1rem;
+    overflow-x: scroll;
+    .list_details {
+      width: 190vw;
+    }
   }
 }

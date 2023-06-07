@@ -2,6 +2,13 @@ $primary: #8440ba;
 $numbers: #fb9b14;
 $white: #ffffff;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Campton", sans-serif;
+}
 // INTRO
 .intro {
   display: flex;
@@ -55,7 +62,11 @@ $white: #ffffff;
   p {
     font-size: small;
     color: #828894;
-    span {
+    .adre {
+      color: $primary;
+      font-weight: bold;
+    }
+    .numb {
       color: $primary;
       font-weight: bold;
     }
@@ -107,5 +118,89 @@ $white: #ffffff;
     font-size: 13px;
     font-style: normal;
     font-weight: 600;
+  }
+}
+
+@media (max-width: 576px) {
+  .intro {
+    width: 100vw;
+    margin-left: 1rem;
+  }
+
+  .balance_container {
+    width: 90vw;
+    margin-left: 1rem;
+  }
+  .wallet_info {
+    margin-left: 2rem;
+    width: 80vw;
+  }
+
+  .payment_title {
+    margin-top: 2rem;
+    margin-left: 1rem;
+  }
+
+  .list_container {
+    padding: 1rem 1rem 1rem 1rem;
+    width: 95vw;
+    margin-left: 1rem;
+
+    border-radius: 5px;
+    .list_details {
+      padding: 0.5rem;
+      border-bottom: 1px solid rgb(168, 162, 162);
+      border-radius: 2px;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  p {
+    font-size: 13px;
+  }
+  h2 {
+    font-size: 13px;
+  }
+  h4 {
+    font-size: 13px;
+  }
+  h3 {
+    font-size: 13px;
+  }
+  .list_container {
+    width: 100vw;
+    margin-left: 0;
+  }
+  .wallet_info {
+    margin-left: 1rem;
+    flex-direction: column;
+    margin-top: 0.5rem;
+
+    p {
+      margin-top: 1rem;
+    }
+    .numb {
+      color: #fb9b14 !important;
+      font-weight: 500 !important;
+    }
+    .adre {
+      border: 1px solid grey;
+      padding: 5px;
+    }
+  }
+
+  .balance_container {
+    width: 90vw;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    .balance_item {
+      width: 90vw;
+      margin-left: 0rem;
+      text-align: center;
+      h2 {
+        margin-top: 0.5rem;
+      }
+    }
   }
 }

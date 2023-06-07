@@ -1,6 +1,7 @@
 $primary: #8440ba;
 
 .nave {
+  position: sticky;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -29,5 +30,40 @@ $primary: #8440ba;
 
   .bell {
     transform: translateX(7rem);
+  }
+  .menu {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .menu {
+    display: block !important;
+    cursor: pointer;
+  }
+
+  .nave {
+    width: 100vw;
+    justify-content: space-between;
+    margin: 0;
+
+    h2 {
+      display: none;
+    }
+
+    h4 {
+      transform: none;
+    }
+    .img {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 55%;
+      background-color: antiquewhite;
+      transform: none;
+    }
+
+    .bell {
+      transform: none;
+    }
   }
 }

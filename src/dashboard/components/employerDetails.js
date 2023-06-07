@@ -12,10 +12,10 @@ import {
 } from "react-router-dom";
 import AddEmployee from "./addEmployee";
 
-export default function EmployerDetails() {
+export default function EmployerDetails({ onDataReceived }) {
   return (
     <Fragment>
-      <NavBar />
+      <NavBar onDataReceived={onDataReceived} />
       {/* DETAILS FUNCTIONS */}
       <div className={styles.details_functions}>
         <h4>Total Employees: 0</h4>
@@ -35,10 +35,13 @@ export default function EmployerDetails() {
       <div className={styles.list_container}>
         <div className={styles.list_details}>
           <h3>S/N</h3>
-          <h3>First Name</h3>
-          <h3>Last Name</h3>
+          <h3> Name</h3>
           <h3>Role</h3>
-          <h3>Earned</h3>
+          <h3>Salary</h3>
+          <h3>Action</h3>
+          <h3>Deducted</h3>
+          <h3>Bonus</h3>
+          <h3>paid</h3>
         </div>
       </div>
 

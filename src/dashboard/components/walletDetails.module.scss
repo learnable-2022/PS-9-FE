@@ -149,3 +149,90 @@ $white: #ffffff;
     font-weight: 600;
   }
 }
+
+// RESPONSIVENESS
+@media (max-width: 360px) {
+  .intro {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    width: 90vw;
+  }
+  .balance_container {
+    text-align: center;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    width: 95vw !important;
+  }
+
+  .wallet_info {
+    margin-left: 1rem;
+    width: 90vw;
+    margin-right: 0;
+    padding: 0px;
+    .btn {
+      width: 8900rem !important;
+      margin-left: 1rem;
+    }
+  }
+
+  .payment_title {
+    margin-left: 2rem;
+  }
+  .list_container {
+    width: 95vw;
+    margin-left: 0.5rem;
+
+    border-radius: 5px;
+    .list_details {
+    }
+
+    h3 {
+      font-size: 10px;
+
+      font-weight: 400;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .intro {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    width: 90vw;
+  }
+  .balance_container {
+    text-align: center;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    width: 95vw !important;
+  }
+
+  .wallet_info {
+    margin-left: 1rem;
+    width: 90vw;
+    margin-right: 0;
+    padding: 0px;
+    .btn {
+      width: 8900rem !important;
+      margin-left: 1rem;
+    }
+  }
+
+  .payment_title {
+    margin-left: 2rem;
+  }
+  .list_container {
+    width: 95vw;
+    margin-left: 0.5rem;
+
+    border-radius: 5px;
+    .list_details {
+    }
+
+    h3 {
+      font-size: 10px;
+
+      font-weight: 400;
+    }
+  }
+}

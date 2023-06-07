@@ -3,11 +3,12 @@ import { Fragment } from "react";
 import styles from "./dashboardButton.module.scss";
 import NavBar from "./navBar";
 
-export default function Dashboard() {
+export default function Dashboard({ onDataReceived }) {
   const title = "DASHBOARD";
+
   return (
     <Fragment>
-      <NavBar name={title} />
+      <NavBar name={title} onDataReceived={onDataReceived} />
       {/* HELLO SECTION */}
       <div className={styles.intro}>
         <h2>Hello, </h2>
@@ -35,10 +36,10 @@ export default function Dashboard() {
 
       <div className={styles.wallet_info}>
         <p>
-          Wallet Address: <span> hftshdfggffh</span>
+          Wallet Address: <span className={styles.adre}> hftshdfggffh</span>
         </p>
         <p>
-          <span>28 Days till next payment</span>
+          <span className={styles.numb}>28 Days till next payment</span>
         </p>
       </div>
 
@@ -48,10 +49,8 @@ export default function Dashboard() {
       <div className={styles.list_container}>
         <div className={styles.list_details}>
           <h3>Employee Name</h3>
-
           <h3>Wallet Address</h3>
           <h3>Salary</h3>
-          <h3>Performance</h3>
           <h3>Paid</h3>
         </div>
       </div>

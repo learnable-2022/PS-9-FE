@@ -45,7 +45,10 @@
   }
 }
 
-.active {
+/* container from side bar */
+
+.side_cover {
   color: white;
-  background-color: red;
+  background-color: #8440ba;
+  padding: 10px;
 }

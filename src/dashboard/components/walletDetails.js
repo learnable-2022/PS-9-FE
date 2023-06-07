@@ -5,25 +5,20 @@ import NavBar from "./navBar";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import SystemUpdateAltIcon from "@mui/icons-material/SystemUpdateAlt";
-
-export default function WalletDetails() {
+import { useState } from "react";
+export default function WalletDetails({ onDataReceived }) {
   const title = "WALLET DETAILS";
 
   return (
     <Fragment>
-      <NavBar name={title} />
+      <NavBar name={title} onDataReceived={onDataReceived} />
       {/* HELLO SECTION */}
       <div className={styles.intro}>
         <h2>Wallet Address: </h2>
         <div className={styles.wallet_details}>
           <p> hgfgdshegeyhhrthrthrhrh</p>
           <BorderColorIcon className={styles.icon} />
-          <ContentCopyIcon
-            className={styles.icon}
-            // onClick={() => {
-            //   navigator.clipboard.writeText(this.state.text);
-            // }}
-          />
+          <ContentCopyIcon className={`${styles.icon}  `} />
         </div>
       </div>
 
