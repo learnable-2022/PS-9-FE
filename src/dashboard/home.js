@@ -30,6 +30,7 @@ import NavBar from "./components/navBar";
 import classNames from "classnames";
 
 export default function Home() {
+  const location = useLocation();
   const [isButtonClicked, setIsButtonClicked] = useState(false);
   const [isBuggarClicked, setIsBuggarClicked] = useState(false);
 
@@ -40,109 +41,125 @@ export default function Home() {
   const handleDataFromGrandchild = (data) => {
     setIsBuggarClicked(!isBuggarClicked);
   };
-  // ${styles.sidebar}  ${
-  //               isBuggarClicked ? styles.special_class : ""
-  //             }`
+
   return (
     <Fragment>
-      <Router>
-        <div
-          className={` ${styles.parent}  ${
-            isButtonClicked ? styles.highlight : ""
-          }   ${isBuggarClicked ? styles.special_class : ""}`}
-        >
-          <div className={` ${styles.sidebar} `}>
-            <div className={styles.logo}>
-              <img src={logo} />
-            </div>
-            <div className={styles.shift}>
-              <button onClick={handleButtonClick} className={styles.shiftNav}>
-                <ArrowCircleLeftIcon className={styles.shiftNavIcon} />
-              </button>
-            </div>
-
-            {/* OTHER SIDE BAR  NAV COMPONENTS */}
-            <div className={styles.dashboard}>
-              <Link to="/" className={styles.link}>
-                <GridViewIcon className={styles.dash} />
-              </Link>{" "}
-              <Link to="/" className={styles.link}>
-                <h2>Dashboard</h2>
-              </Link>
-            </div>
-            <div className={styles.wallet}>
-              <Link className={styles.link} to="/wallet">
-                <WalletIcon className={styles.icon} />
-              </Link>
-              <Link className={styles.link} to="/wallet">
-                <h2> Wallet Details</h2>
-              </Link>
-            </div>
-            <div className={styles.employee}>
-              <Link className={styles.link} to="/employerdetails">
-                <Diversity3Icon className={styles.icon} />
-              </Link>
-              <Link className={styles.link} to="/employerdetails">
-                <h2> Employee Details</h2>
-              </Link>
-            </div>
-            <div className={styles.add}>
-              <Link className={styles.link} to="/addemployee">
-                <BorderColorIcon className={styles.add_icon} />
-              </Link>{" "}
-              <Link className={styles.link} to="/addemployee">
-                <h2> Add/Remove Employee</h2>
-              </Link>
-            </div>
-            <div className={styles.analytics}>
-              <Link className={styles.link} to="/analytics">
-                <SettingsIcon className={styles.analytics_icon} />
-              </Link>{" "}
-              <Link className={styles.link} to="/analytics">
-                <h2> Settings</h2>
-              </Link>
-            </div>
-            <div className={styles.logout}>
-              <h2>Logout</h2>
-            </div>
+      {/* <Router> */}
+      <div
+        className={` ${styles.parent}  ${
+          isButtonClicked ? styles.highlight : ""
+        }   ${isBuggarClicked ? styles.special_class : ""}`}
+      >
+        <div className={` ${styles.sidebar} `}>
+          <div className={styles.logo}>
+            <img src={logo} />
+          </div>
+          {/* <div className={styles.shift}>
+            <button onClick={handleButtonClick} className={styles.shiftNav}>
+              <ArrowCircleLeftIcon className={styles.shiftNavIcon} />
+            </button>
+          </div> */}
+          {/* OTHER SIDE BAR  NAV COMPONENTS */}
+          <div
+            className={classNames(styles.dashboard, {
+              [styles.active]: location.pathname === "/home/home/dashboard",
+            })}
+          >
+            <Link to="home/dashboard" className={styles.link}>
+              <GridViewIcon className={styles.dash} />
+            </Link>{" "}
+            <Link to="home/dashboard" className={styles.link}>
+              <h2>Dashboard</h2>
+            </Link>
           </div>
 
-          <div className={styles.renderComponent}>
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <Dashboard onDataReceived={handleDataFromGrandchild} />
-                }
-              />
-              <Route
-                path="/wallet"
-                element={
-                  <WalletDetails onDataReceived={handleDataFromGrandchild} />
-                }
-              />
-              <Route
-                path="/employerdetails"
-                element={
-                  <EmployerDetails onDataReceived={handleDataFromGrandchild} />
-                }
-              />
-              <Route
-                path="/addemployee"
-                element={
-                  <AddEmployee onDataReceived={handleDataFromGrandchild} />
-                }
-              />
-              <Route
-                path="/analytics"
-                element={
-                  <Analytics onDataReceived={handleDataFromGrandchild} />
-                }
-              />
-            </Routes>
+          <div
+            className={classNames(styles.wallet, {
+              [styles.active]: location.pathname === "/home/home/wallet",
+            })}
+          >
+            <Link className={styles.link} to="home/wallet">
+              <WalletIcon className={styles.icon} />
+            </Link>
+            <Link className={styles.link} to="home/wallet">
+              <h2> Wallet Details</h2>
+            </Link>
+          </div>
+          <div
+            className={classNames(styles.employee, {
+              [styles.active]:
+                location.pathname === "/home/home/employerdetails",
+            })}
+          >
+            <Link className={styles.link} to="home/employerdetails">
+              <Diversity3Icon className={styles.icon} />
+            </Link>
+            <Link className={styles.link} to="home/employerdetails">
+              <h2> Employee Info</h2>
+            </Link>
+          </div>
+          <div
+            className={classNames(styles.add, {
+              [styles.active]: location.pathname === "/home/home/addemployee",
+            })}
+          >
+            <Link className={styles.link} to="home/addemployee">
+              <BorderColorIcon className={styles.icon} />
+            </Link>{" "}
+            <Link className={styles.link} to="home/addemployee">
+              <h2> Add Employee</h2>
+            </Link>
+          </div>
+          <div
+            className={classNames(styles.analytics, {
+              [styles.active]: location.pathname === "/home/home/analytics",
+            })}
+          >
+            <Link className={styles.link} to="/analytics">
+              <SettingsIcon className={styles.icon} />
+            </Link>{" "}
+            <Link className={styles.link} to="home/analytics">
+              <h2> Settings</h2>
+            </Link>
+          </div>
+          <div className={styles.logout}>
+            <h2>Logout</h2>
           </div>
         </div>
-      </Router>
+
+        <div className={styles.renderComponent}>
+          <Routes>
+            <Route
+              path="home/dashboard"
+              element={<Dashboard onDataReceived={handleDataFromGrandchild} />}
+            />
+            <Route
+              path="home/wallet"
+              element={
+                <WalletDetails onDataReceived={handleDataFromGrandchild} />
+              }
+            />
+
+            <Route
+              path="home/employerdetails/*"
+              element={
+                <EmployerDetails onDataReceived={handleDataFromGrandchild} />
+              }
+            />
+            <Route
+              path="home/addemployee"
+              element={
+                <AddEmployee onDataReceived={handleDataFromGrandchild} />
+              }
+            />
+            <Route
+              path="home/analytics"
+              element={<Analytics onDataReceived={handleDataFromGrandchild} />}
+            />
+          </Routes>
+        </div>
+      </div>
+      {/* </Router> */}
     </Fragment>
   );
 }

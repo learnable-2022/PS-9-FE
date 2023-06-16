@@ -2,7 +2,11 @@ $primary: #8440ba;
 $background: #f4f0f6;
 body {
   font-family: "Campton", sans-serif;
-  background-color: $background;
+  background-color: #f4f0f6;
+}
+
+.renderComponent {
+  background-color: #f4f0f6;
 }
 .parent {
   display: grid;
@@ -44,6 +48,7 @@ body {
 
 .icon {
   color: $primary;
+  margin-left: 0rem;
 }
 
 .dashboard {
@@ -58,7 +63,7 @@ body {
     margin-left: 1rem;
     font-style: normal;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 13px;
     line-height: 28px;
   }
 
@@ -78,7 +83,7 @@ body {
     margin-left: 1rem;
     font-style: normal;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 13px;
     line-height: 28px;
   }
   .wallet_icon {
@@ -97,7 +102,7 @@ body {
     margin-left: 1rem;
     font-style: normal;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 13px;
     line-height: 28px;
   }
   .employee_icon {
@@ -116,7 +121,7 @@ body {
     margin-left: 1rem;
     font-style: normal;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 13px;
     line-height: 28px;
   }
   .add_icon {
@@ -135,7 +140,7 @@ body {
     margin-left: 1rem;
     font-style: normal;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 13px;
     line-height: 28px;
   }
   .analytics_icon {
@@ -153,7 +158,7 @@ body {
   h2 {
     font-style: normal;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 13px;
     line-height: 28px;
     color: #e02b1d;
   }
@@ -197,6 +202,28 @@ body {
       width: 2.5rem;
       border-radius: 50%;
     }
+  }
+}
+
+// ACTIVE CLASSS
+
+.active {
+  background-color: $primary;
+  padding: 2px;
+  color: white;
+
+  .link {
+    color: white;
+  }
+  .dash {
+    color: white;
+    margin-left: 2rem;
+    margin-top: 7px;
+  }
+  .icon {
+    color: white;
+    margin-left: 2rem;
+    margin-top: 7px;
   }
 }
 
@@ -269,6 +296,14 @@ body {
   }
 }
 
+@media (max-width: 747px) {
+  .active {
+    .icon {
+      margin-left: 1rem !important;
+    }
+  }
+}
+
 @media (max-width: 576px) {
   .parent {
   }
@@ -289,7 +324,7 @@ body {
     position: absolute;
     top: 5rem;
     background-color: white;
-    width: 50%;
+    width: 75%;
   }
   .renderComponent {
   }

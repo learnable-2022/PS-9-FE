@@ -6,7 +6,18 @@ $background: hsl(240, 3%, 82%);
 body {
   background-color: $background;
 }
-
+.pay_btn {
+  width: 6rem;
+  height: 3rem;
+  background-color: $primary;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  font-weight: 500;
+  margin-left: 2rem;
+  padding: 10px;
+}
 .details_functions {
   display: flex;
   flex-direction: row;
@@ -51,18 +62,29 @@ body {
 // EMPLOYEE LISTR
 
 .list_container {
-  background-color: white;
+  background-color: #f4f5f7;
   padding: 1rem 1rem 1rem 1rem;
-  width: 60vw;
-  margin-left: 6rem;
+  width: 70vw;
+  height: 7 0vh;
+  margin-left: 2rem;
   margin-top: 2rem;
   border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+
+  .title_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
   .list_details {
     color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    flex-wrap: wrap;
+
     background-color: white;
     color: rgb(88, 85, 85);
 
@@ -76,6 +98,22 @@ body {
     font-style: normal;
     font-weight: 400;
   }
+}
+
+.edit_container {
+  border: none;
+  background-color: #f4f5f7;
+  cursor: pointer;
+  .edit_btn {
+    color: rgb(146, 142, 142);
+    &:hover {
+      color: rgb(73, 69, 69);
+    }
+  }
+}
+.row {
+  background-color: #f4f5f7;
+  text-transform: capitalize;
 }
 
 // RESPONSIVENESS

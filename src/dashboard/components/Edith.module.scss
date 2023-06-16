@@ -61,7 +61,6 @@ body {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
   grid-column-gap: 5rem;
-  text-align: left;
 
   //   grid-row-gap: 42px;
   padding: 0rem 6rem 0rem 6rem;
@@ -83,10 +82,13 @@ body {
 .button {
   margin-top: 1rem;
   margin-left: 6rem;
+  display: flex;
+  flex-direction: row;
   .button1 {
     width: 10rem;
     height: 2.3rem;
-    background-color: $primary;
+    background-color: #e02b1d;
+
     border: none;
     cursor: pointer;
     border-radius: 5px;
@@ -97,11 +99,11 @@ body {
     margin-left: 3rem;
     width: 10rem;
     height: 2.3rem;
-    background-color: hsl(240, 3%, 82%);
+    background-color: $primary;
     border: 1px solid rgb(83, 82, 82);
     cursor: pointer;
     border-radius: 5px;
-    color: black;
+    color: white;
     font-weight: bold;
   }
 }
@@ -171,6 +173,18 @@ body {
     .button2 {
       margin-left: 1rem;
       margin-top: 1rem;
+    }
+  }
+}
+
+.edit_container {
+  border: none;
+  background-color: #f4f5f7;
+  cursor: pointer;
+  .edit_btn {
+    color: rgb(146, 142, 142);
+    &:hover {
+      color: rgb(73, 69, 69);
     }
   }
 }

@@ -15,8 +15,6 @@ import {
 } from "react-router-dom";
 
 export default function AddEmployee({ onDataReceived }) {
-  // REQUIRE AXIOS
-  // const axios = require("axios");
   const history = useNavigate();
 
   // IMAGE URL AND IMAGE STATE
@@ -111,24 +109,25 @@ export default function AddEmployee({ onDataReceived }) {
     e.preventDefault();
     setEmployeeData(newData);
 
-    // Send API request here
-    // Make a POST request
+    const accessToken = localStorage.getItem("accessToken");
     axios
       .post(
-        "https://payroll-team9.onrender.com/api/v1/addemployee",
-        employeeData
+        "https://payroll-team9.onrender.com/api/v1/employees/",
+        employeeData,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`, // Include the access token in the Authorization header
+            "Content-Type": "application/json",
+          },
+        }
       )
       .then(function (response) {
-        console.log("Response:", response.data);
+        console.log("Response:", response);
       })
       .catch(function (error) {
         console.error("Error:", error);
       });
-    // Use the formData to send the required data to the API
-    // You can use Axios or any other HTTP client library for sending the request
-    // Example: axios.post('/api/endpoint', formData).then(...)
   };
-
   // DYNAMIC NAVBAR TITLE
   const title = "ADD EMPLOYEE";
 
@@ -142,8 +141,7 @@ export default function AddEmployee({ onDataReceived }) {
       {/* ADD OR REMOVE FUNCTION */}
       <div className={styles.addContainer}>
         <div className={styles.add_text}>
-          <h3>Add</h3>
-          <h3>Remove</h3>
+          <h3>Add Employee</h3>
         </div>
       </div>
 
@@ -230,7 +228,7 @@ export default function AddEmployee({ onDataReceived }) {
             <label className={styles.label}>
               wallet Address
               <input
-                type="number"
+                type="text"
                 placeholder="number"
                 value={walletAdress}
                 onChange={handleWalletAdressChange}

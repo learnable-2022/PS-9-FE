@@ -1,0 +1,72 @@
+import {
+  TableContainer,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  Paper,
+  TablePagination,
+} from "@mui/material";
+import { useState, useEffect } from "react";
+import { Fragment } from "react";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
+
+export const MuiTable = () => {
+  // const [page, setPage] = useState(0);
+  // const [rowsPerPage, setRowsPerPage] = useState(1);
+
+  // const handleChangePage = (e, newPage) => {
+  //   setPage(newPage);
+  // };
+
+  // const handleChangeRowsPerPage = (event) => {
+  //   setRowsPerPage(parseInt(event.target.value), 10);
+  //   setPage(0);
+  // };
+
+  return (
+    <Fragment>
+      <TableContainer component={Paper} sx={{ maxHeight: "300px" }}>
+        <Table aria-label="Simple Table" stickyHeader>
+          <TableHead>
+            <TableRow>
+              <TableCell>id</TableCell>
+              <TableCell>first name</TableCell>
+              <TableCell>last name</TableCell>
+              <TableCell align="center">email</TableCell>
+              <TableCell>Action</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {tableData
+
+              // (page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row) => (
+                <TableRow key={row.id}>
+                  <TableCell>{row.id}</TableCell>
+                  <TableCell>{row.first_name}</TableCell>
+                  <TableCell>{row.last_name}</TableCell>
+
+                  <TableCell align="center">{row.email}</TableCell>
+                  <TableCell>
+                    <button>
+                      <BorderColorIcon />
+                    </button>
+                  </TableCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      {/* <TablePagination
+        rowsPerPageOptions={[1, 2, 3]}
+        component="div"
+        count={tableData.length}
+        page={rowsPerPage}
+        onPageChange={handleChangePage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
+      /> */}
+    </Fragment>
+  );
+};
