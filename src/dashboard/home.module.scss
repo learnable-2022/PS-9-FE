@@ -1,0 +1,336 @@
+$primary: #8440ba;
+$background: #f4f0f6;
+body {
+  font-family: "Campton", sans-serif;
+  background-color: #f4f0f6;
+}
+
+.renderComponent {
+  background-color: #f4f0f6;
+}
+.parent {
+  display: grid;
+
+  grid-template-columns: 1fr 3.5fr;
+
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.sidebar {
+  background-color: rgb(255, 253, 253);
+  height: 100vh;
+
+  border-top-right-radius: 3rem;
+  box-shadow: 11px 11px 14px -8px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 11px 11px 14px -8px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 11px 11px 14px -8px rgba(0, 0, 0, 0.75);
+}
+.logo {
+  display: flex;
+  padding: 2rem;
+
+  justify-content: center;
+  border-bottom: 10px solid $background;
+  img {
+    width: 4rem;
+    height: 4rem;
+    // margin-left: 2rem;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    color: $primary;
+  }
+}
+
+.icon {
+  color: $primary;
+  margin-left: 0rem;
+}
+
+.dashboard {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  padding-left: 2rem;
+
+  // margin-top: 1rem;
+  align-items: center;
+  h2 {
+    margin-left: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 28px;
+  }
+
+  .dash {
+    color: $primary;
+  }
+}
+
+.wallet {
+  display: flex;
+  flex-direction: row;
+  padding-left: 2rem;
+
+  margin-top: 1.5rem;
+  align-items: center;
+  h2 {
+    margin-left: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 28px;
+  }
+  .wallet_icon {
+    color: $primary;
+  }
+}
+
+.employee {
+  display: flex;
+  flex-direction: row;
+  padding-left: 2rem;
+
+  margin-top: 1.5rem;
+  align-items: center;
+  h2 {
+    margin-left: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 28px;
+  }
+  .employee_icon {
+    color: $primary;
+  }
+}
+
+.add {
+  display: flex;
+  flex-direction: row;
+  padding-left: 2rem;
+
+  margin-top: 1.5rem;
+  align-items: center;
+  h2 {
+    margin-left: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 28px;
+  }
+  .add_icon {
+    color: $primary;
+  }
+}
+
+.analytics {
+  display: flex;
+  flex-direction: row;
+  padding-left: 2rem;
+
+  margin-top: 1.5rem;
+  align-items: center;
+  h2 {
+    margin-left: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 28px;
+  }
+  .analytics_icon {
+    color: $primary;
+  }
+}
+
+.logout {
+  position: absolute;
+  bottom: 0;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+
+  h2 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 28px;
+    color: #e02b1d;
+  }
+}
+
+.highlight {
+  grid-template-columns: 1fr 10fr;
+  .sidebar {
+    .logo {
+      padding: 1rem;
+    }
+    img {
+      width: 3rem;
+      height: 3rem;
+    }
+    h2 {
+      display: none;
+    }
+    transition: all 0.4s ease-in-out;
+  }
+  .shiftNavIcon {
+    transform: rotate(180deg);
+  }
+}
+
+.shift {
+  display: flex;
+  justify-content: flex-end;
+
+  .shiftNav {
+    background-color: white;
+    border: none;
+    align-self: end;
+
+    -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
+    animation: heartbeat 1.5s ease-in-out infinite both;
+
+    .shiftNavIcon {
+      color: #8440ba;
+      height: 2.5rem;
+      width: 2.5rem;
+      border-radius: 50%;
+    }
+  }
+}
+
+// ACTIVE CLASSS
+
+.active {
+  background-color: $primary;
+  padding: 2px;
+  color: white;
+
+  .link {
+    color: white;
+  }
+  .dash {
+    color: white;
+    margin-left: 2rem;
+    margin-top: 7px;
+  }
+  .icon {
+    color: white;
+    margin-left: 2rem;
+    margin-top: 7px;
+  }
+}
+
+@-webkit-keyframes heartbeat {
+  from {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  10% {
+    -webkit-transform: scale(0.91);
+    transform: scale(0.91);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  17% {
+    -webkit-transform: scale(0.98);
+    transform: scale(0.98);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  33% {
+    -webkit-transform: scale(0.87);
+    transform: scale(0.87);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  45% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+}
+@keyframes heartbeat {
+  from {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  10% {
+    -webkit-transform: scale(0.91);
+    transform: scale(0.91);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  17% {
+    -webkit-transform: scale(0.98);
+    transform: scale(0.98);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  33% {
+    -webkit-transform: scale(0.87);
+    transform: scale(0.87);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  45% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+}
+
+@media (max-width: 747px) {
+  .active {
+    .icon {
+      margin-left: 1rem !important;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .parent {
+  }
+  .sidebar {
+    width: 100%;
+    display: none;
+  }
+  .renderComponent {
+    display: block !important;
+  }
+}
+
+.special_class {
+  grid-template-columns: 1fr;
+  .sidebar {
+    display: block;
+    z-index: 1;
+    position: absolute;
+    top: 5rem;
+    background-color: white;
+    width: 75%;
+  }
+  .renderComponent {
+  }
+  margin-right: 0;
+
+  .shift {
+    display: none;
+  }
+}
