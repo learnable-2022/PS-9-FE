@@ -1,8 +1,8 @@
 import SignIn from "./component/SignIn";
 
-// import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Login from "./component/Login";
-import { HashRouter as Routes, Route, Switch } from 'react-router-dom';
+
 import Home from "../dashboard/home";
 import LandingPage from "./landingpage/LandingPage";
 import { Fragment } from "react";
