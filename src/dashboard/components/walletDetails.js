@@ -5,9 +5,15 @@ import NavBar from "./navBar";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import SystemUpdateAltIcon from "@mui/icons-material/SystemUpdateAlt";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useStore } from "./useStore";
+
+import axios from "axios";
+
 export default function WalletDetails({ onDataReceived }) {
   const title = "WALLET DETAILS";
+
+  const { userWallet, userEmployees } = useStore();
 
   return (
     <Fragment>
@@ -16,7 +22,7 @@ export default function WalletDetails({ onDataReceived }) {
       <div className={styles.intro}>
         <h2>Wallet Address: </h2>
         <div className={styles.wallet_details}>
-          <p> hgfgdshegeyhhrthrthrhrh</p>
+          <p>{userWallet}</p>
           <BorderColorIcon className={styles.icon} />
           <ContentCopyIcon className={`${styles.icon}  `} />
         </div>
@@ -35,7 +41,7 @@ export default function WalletDetails({ onDataReceived }) {
         </div>
         <div className={styles.balance_item}>
           <p>Total Employees:</p>
-          <h2>0</h2>
+          <h2>{userEmployees}</h2>
         </div>
       </div>
       {/* 
@@ -43,15 +49,15 @@ export default function WalletDetails({ onDataReceived }) {
 
       <div className={styles.wallet_info}>
         <button className={styles.btn}>
-          <p>
+          <a>
             {" "}
             DEPOSIT <SystemUpdateAltIcon className={styles.deposit_icon} />
-          </p>
+          </a>
         </button>
         <button className={styles.btn}>
-          <p>
+          <a>
             WITHDRAW <SystemUpdateAltIcon className={styles.upload_icon} />
-          </p>
+          </a>
         </button>
       </div>
 

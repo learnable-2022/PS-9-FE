@@ -22,6 +22,11 @@ body {
   }
 }
 
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .employee_img {
   display: flex;
   flex-direction: row;
@@ -173,6 +178,9 @@ body {
     .button2 {
       margin-left: 1rem;
       margin-top: 1rem;
+      &:hover {
+        background-color: #845ba7;
+      }
     }
   }
 }
@@ -183,6 +191,8 @@ body {
   cursor: pointer;
   .edit_btn {
     color: rgb(146, 142, 142);
+    border: none;
+
     &:hover {
       color: rgb(73, 69, 69);
     }

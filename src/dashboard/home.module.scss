@@ -20,7 +20,7 @@ body {
   background-color: rgb(255, 253, 253);
   height: 100vh;
 
-  border-top-right-radius: 3rem;
+  border-top-right-radius: 1px;
   box-shadow: 11px 11px 14px -8px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 11px 11px 14px -8px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 11px 11px 14px -8px rgba(0, 0, 0, 0.75);
@@ -215,6 +215,7 @@ body {
   .link {
     color: white;
   }
+
   .dash {
     color: white;
     margin-left: 2rem;
@@ -224,75 +225,6 @@ body {
     color: white;
     margin-left: 2rem;
     margin-top: 7px;
-  }
-}
-
-@-webkit-keyframes heartbeat {
-  from {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-transform-origin: center center;
-    transform-origin: center center;
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-  }
-  10% {
-    -webkit-transform: scale(0.91);
-    transform: scale(0.91);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-  17% {
-    -webkit-transform: scale(0.98);
-    transform: scale(0.98);
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-  }
-  33% {
-    -webkit-transform: scale(0.87);
-    transform: scale(0.87);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-  45% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-  }
-}
-@keyframes heartbeat {
-  from {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-transform-origin: center center;
-    transform-origin: center center;
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-  }
-  10% {
-    -webkit-transform: scale(0.91);
-    transform: scale(0.91);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-  17% {
-    -webkit-transform: scale(0.98);
-    transform: scale(0.98);
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-  }
-  33% {
-    -webkit-transform: scale(0.87);
-    transform: scale(0.87);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-  45% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
   }
 }
 
@@ -306,9 +238,11 @@ body {
 
 @media (max-width: 576px) {
   .parent {
+    display: grid;
+    grid-template-columns: 1fr;
   }
   .sidebar {
-    width: 100%;
+    // width: 100%;
     display: none;
   }
   .renderComponent {
@@ -324,7 +258,7 @@ body {
     position: absolute;
     top: 5rem;
     background-color: white;
-    width: 75%;
+    width: 100vw;
   }
   .renderComponent {
   }

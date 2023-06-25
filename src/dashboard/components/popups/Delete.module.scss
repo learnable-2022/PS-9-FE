@@ -11,6 +11,9 @@
     border-radius: 5px;
     width: 5rem;
     cursor: pointer;
+    &:hover {
+      background-color: #8c52bb;
+    }
   }
   .cancle {
     padding: 0.5rem;
