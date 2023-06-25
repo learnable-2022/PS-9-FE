@@ -14,7 +14,7 @@ function Sign() {
         <Route path="home/*" element={<Home />} />
         <Route path="/" exact element={<LandingPage />} />
         <Route path="/getstarted" exact element={<SignIn />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" exact element={<Login />} />
       </Routes>
     </Fragment>
   );
