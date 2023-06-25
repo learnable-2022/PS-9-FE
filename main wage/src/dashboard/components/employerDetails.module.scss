@@ -1,0 +1,210 @@
+$primary: #8440ba;
+$background: hsl(240, 3%, 82%);
+* {
+  margin-left: 0;
+}
+body {
+  background-color: $background;
+}
+
+.payout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.pay_btn {
+  width: 6rem;
+  height: 3rem;
+  background-color: $primary;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  font-weight: 500;
+  padding: 10px;
+
+  &:hover {
+    background-color: #8c58b8;
+  }
+}
+.details_functions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 2rem;
+  margin-left: 7rem;
+  .button1 {
+    width: 4rem;
+    height: 2rem;
+    background-color: $primary;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    margin-left: 2rem;
+  }
+  .link {
+    text-decoration: none;
+    color: white;
+  }
+  input {
+    margin-left: 4rem;
+    height: 2rem;
+    border: 1px solid rgb(158, 160, 158);
+    border-radius: 4px;
+    padding: 1rem;
+  }
+  .search_container {
+    background-color: $primary;
+    padding: 6px;
+    margin-left: 4px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .search_icon {
+    color: white;
+    font-size: 18px;
+  }
+}
+
+// EMPLOYEE LISTR
+
+.list_container {
+  background-color: #f4f5f7;
+  padding: 1rem 1rem 1rem 1rem;
+  width: 70vw;
+  height: 7 0vh;
+  margin-left: 2rem;
+  margin-top: 2rem;
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+
+  .title_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .list_details {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    background-color: white;
+    color: rgb(88, 85, 85);
+
+    padding: 0.5rem;
+    border-bottom: 1px solid rgb(168, 162, 162);
+    border-radius: 2px;
+  }
+
+  h3 {
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+  }
+}
+
+.edit_container {
+  border: none;
+  background-color: #f4f5f7;
+  cursor: pointer;
+  .edit_btn {
+    color: rgb(146, 142, 142);
+    &:hover {
+      color: rgb(73, 69, 69);
+    }
+  }
+}
+.row {
+  background-color: #f4f5f7;
+  text-transform: capitalize;
+}
+
+.edit_employee {
+  border: none;
+}
+
+.trigger {
+  border: none;
+  background-color: red;
+}
+
+// RESPONSIVENESS
+
+@media (max-width: 360px) {
+  .details_functions {
+    flex-direction: column;
+    margin-left: 0rem;
+    justify-content: flex-start;
+    .button1 {
+      margin-left: 0rem;
+      width: 85vw;
+      margin-top: 0.5rem;
+    }
+    .link {
+      margin-left: 0px;
+    }
+    input {
+      margin-left: 0rem;
+      margin-top: 0.5rem;
+      width: 85vw;
+    }
+    .search_container {
+      width: 85vw;
+      margin-top: 0.5rem;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .list_container {
+    width: 90vw;
+    margin-left: 1rem;
+    overflow-x: scroll;
+    .list_details {
+      width: 190vw;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .details_functions {
+    flex-direction: column;
+    margin-left: 0rem;
+    justify-content: flex-start;
+    .button1 {
+      margin-left: 0rem;
+      width: 85vw;
+      margin-top: 0.5rem;
+    }
+    .link {
+      margin-left: 0px;
+    }
+    input {
+      margin-left: 0rem;
+      margin-top: 0.5rem;
+      width: 85vw;
+    }
+    .search_container {
+      width: 85vw;
+      margin-top: 0.5rem;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .list_container {
+    width: 90vw;
+    margin-left: 1rem;
+    overflow-x: scroll;
+    .list_details {
+      width: 190vw;
+    }
+  }
+}
