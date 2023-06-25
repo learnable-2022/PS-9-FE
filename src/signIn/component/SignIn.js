@@ -4,6 +4,7 @@ import logo from "../image/logo.webp";
 import { useNavigate } from "react-router-dom";
 import Login from "./Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import App from "../../App";
 
 const SignIn = () => {
   const navigate = useNavigate();

@@ -53,10 +53,12 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function CustomizedDialogs() {
+export default function CustomizedDialogs({ selectedId }) {
   const [open, setOpen] = React.useState(false);
-  const [selectedId, setSelectedId] = useState(null);
+
   const navigate = useNavigate();
+
+  console.log("deleyte", selectedId);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -72,9 +74,10 @@ export default function CustomizedDialogs() {
       )
       .then(function (response) {
         alert("Successfully deleted!");
-        navigate("/home/employerdetails");
+
         // Handle success
         console.log("Deleted successfully");
+        console.log(response);
       })
       .catch(function (error) {
         // Handle error
@@ -82,12 +85,22 @@ export default function CustomizedDialogs() {
       });
   };
 
+  console.log(selectedId);
+
   return (
     <div>
       <Button
         variant="outlined"
         onClick={handleClickOpen}
         className={styles.button1}
+        sx={{
+          backgroundColor: "red",
+          color: "white",
+          border: "none",
+          "&:hover": {
+            backgroundColor: "#ff3842",
+          },
+        }}
       >
         Remove
       </Button>
@@ -105,12 +118,19 @@ export default function CustomizedDialogs() {
         <DialogContent dividers>
           <p> Are you sure you want to delete this Employee?</p>
           <div className={styles.btn_container}>
-            <button className={styles.delete} onClick={handleDelete}>
+            <button
+              className={styles.delete}
+              onClick={() => {
+                handleDelete();
+                handleClose();
+              }}
+            >
+              {" "}
               delete
             </button>
             <button className={styles.cancle} onClick={handleClose}>
               {" "}
-              Cancle{" "}
+              Cancel{" "}
             </button>
           </div>
         </DialogContent>

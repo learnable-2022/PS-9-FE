@@ -1,3 +1,24 @@
+.loader-container {
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Adjust height as needed */
+}
+.error {
+  color: red;
+  margin-top: 1rem;
+  font-size: 12px;
+  text-align: center;
+}
+
+.payout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1rem;
+}
 .login {
   display: flex;
   justify-content: space-between;

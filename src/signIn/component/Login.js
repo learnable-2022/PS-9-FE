@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import React from "react";
 import "./Login.css";
 import background from "../image/withlogo.webp";
 import { CiFacebook } from "react-icons/ci";
@@ -15,22 +15,29 @@ import { useNavigate } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import Dashboard from "../../dashboard/components/dashboardButton";
 
+import { BeatLoader } from "react-spinners";
+import { useStore } from "../../dashboard/components/useStore";
+import App from "../../App";
+
 const Login = () => {
+  const {
+    loading,
+    fetchData,
+    setLoading,
+    setUserId,
+    setCompany,
+    setUserWallet,
+    setUserEmployees,
+  } = useStore();
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
-  const [validPwd, setValidPwd] = useState(false);
   const [pwdType, setPwdType] = useState("password");
   const [pwdFocus, setPwdFocus] = useState(false);
+  const [errormsg, seterrormsg] = useState(false);
 
   const navigate = useNavigate();
-  // const PWD_REGEX =
-  //   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/g;
 
-  // useEffect(() => {
-  //   const result = PWD_REGEX.test(pwd);
-  //   setValidPwd(result);
-  // }, [pwd]);
-
+  // TOOGLE EYE TO VIEW PASSWORD
   const toggle_btn = () => {
     if (pwdType === "password") {
       setPwdType("text");
@@ -39,34 +46,29 @@ const Login = () => {
     }
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setEmployeeData(newData);  
+  // SUBMIT FUNCTION
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const res = axios
-      .post("https://payroll-team9.onrender.com/api/v1/users/login", {
-        email,
-        password: pwd,
-      })
-      .then((res) => {
-        console.log("aaa", res);
-        const isLoginSuccessful = res.data.accessToken;
-        if (isLoginSuccessful) {
-          const accessToken = isLoginSuccessful;
-          localStorage.setItem("accessToken", accessToken);
-          navigate("/home");
-        }
-      })
-
-      .catch((err) => console.log(err));
+    setLoading(true); // Set loading state to true
+    try {
+      const res = await fetchData(email, pwd);
+      console.log("aaa", res);
+      console.log("user", res.data.user._id);
+      console.log(res.data.user.employees.length);
+      navigate("/home/home/dashboard");
+    } catch (error) {
+      // console.error("Error:", error);
+      if (error.response) {
+        // console.error();
+      } else {
+        seterrormsg("Sorry, an unexpected error occurred. Try again");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
-
-  <Routes>
-    <Route path="/home" exact element={<Home />} />
-  </Routes>;
+  // CHECK IF WORKING LATER
 
   const goBack = () => {
     navigate(-1);
@@ -90,53 +92,62 @@ const Login = () => {
           <h1>Sign in</h1>
           <p>Enter your E-mail & password</p>
         </div>
-        <form className="login-form" onSubmit={handleSubmit}>
-          <label className="login-label" htmlFor="email">
-            E-mail
-          </label>
-          <input
-            name="email"
-            type="email"
-            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-            required
-            placeholder="example@gmail.com"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-          />
-          <label className="login-label" htmlFor="password">
-            Password
-          </label>
-          <input
-            type={pwdType}
-            placeholder="password"
-            name="password"
-            required
-            id="password"
-            onChange={(e) => setPwd(e.target.value)}
-            value={pwd}
-            onFocus={() => setPwdFocus(true)}
-            onBlur={() => setPwdFocus(false)}
-          />
-          <div className="btn_eye">
-            <i onClick={toggle_btn} className="toggle_btn">
-              {pwdType === "password" ? (
-                <AiOutlineEye />
-              ) : (
-                <AiOutlineEyeInvisible />
-              )}
-            </i>
+        {loading ? (
+          <div classNamse="payout">
+            <BeatLoader color="#8440ba" />
           </div>
-
-          <div className="text">
-            <label htmlFor="check" className="login-check">
-              <input type="checkbox" name="" id="check" /> Remember me{" "}
+        ) : (
+          <form className="login-form" onSubmit={handleSubmit}>
+            <p className="error">{errormsg}</p>
+            <label className="login-label" htmlFor="email">
+              E-mail
             </label>
-            <p className="check-span">Forgot Password?</p>
-          </div>
-          <button type="submit" onSubmit={handleSubmit} className="login-btn">
-            SIGN IN
-          </button>
-        </form>
+
+            <input
+              name="email"
+              type="email"
+              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+              required
+              placeholder="example@gmail.com"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+            />
+            <label className="login-label" htmlFor="password">
+              Password
+            </label>
+            <input
+              type={pwdType}
+              placeholder="password"
+              name="password"
+              required
+              id="password"
+              onChange={(e) => setPwd(e.target.value)}
+              value={pwd}
+              onFocus={() => setPwdFocus(true)}
+              onBlur={() => setPwdFocus(false)}
+            />
+            <div className="btn_eye">
+              <i onClick={toggle_btn} className="toggle_btn">
+                {pwdType === "password" ? (
+                  <AiOutlineEye />
+                ) : (
+                  <AiOutlineEyeInvisible />
+                )}
+              </i>
+            </div>
+
+            <div className="text">
+              <label htmlFor="check" className="login-check">
+                <input type="checkbox" name="" id="check" /> Remember me{" "}
+              </label>
+              <p className="check-span">Forgot Password?</p>
+            </div>
+            <button type="submit" onSubmit={handleSubmit} className="login-btn">
+              SIGN IN
+            </button>
+          </form>
+        )}
+
         <p className="login-para">
           Don't have an account?{" "}
           <Link

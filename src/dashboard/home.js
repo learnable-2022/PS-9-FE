@@ -23,12 +23,11 @@ import { Link } from "react-router-dom";
 import EmployerDetails from "./components/employerDetails";
 import Analytics from "./components/analytics";
 import Dashboard from "./components/dashboardButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import NavBar from "./components/navBar";
 
 import classNames from "classnames";
-
 export default function Home() {
   const location = useLocation();
   const [isButtonClicked, setIsButtonClicked] = useState(false);
@@ -54,11 +53,7 @@ export default function Home() {
           <div className={styles.logo}>
             <img src={logo} />
           </div>
-          {/* <div className={styles.shift}>
-            <button onClick={handleButtonClick} className={styles.shiftNav}>
-              <ArrowCircleLeftIcon className={styles.shiftNavIcon} />
-            </button>
-          </div> */}
+
           {/* OTHER SIDE BAR  NAV COMPONENTS */}
           <div
             className={classNames(styles.dashboard, {
@@ -105,7 +100,7 @@ export default function Home() {
           >
             <Link className={styles.link} to="home/addemployee">
               <BorderColorIcon className={styles.icon} />
-            </Link>{" "}
+            </Link>
             <Link className={styles.link} to="home/addemployee">
               <h2> Add Employee</h2>
             </Link>
@@ -141,7 +136,7 @@ export default function Home() {
             />
 
             <Route
-              path="home/employerdetails/*"
+              path="home/employerdetails/"
               element={
                 <EmployerDetails onDataReceived={handleDataFromGrandchild} />
               }

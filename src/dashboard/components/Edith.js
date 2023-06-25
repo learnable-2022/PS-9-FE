@@ -31,50 +31,28 @@ import { forwardRef } from "react";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import styles from "./Edith.module.scss";
 import BootstrapDialogTitle from "./popups/Delete";
+import { BeatLoader } from "react-spinners";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 // STUFFS START HERE
-export default function FullScreenDialog({ selectedId }) {
+export default function FullScreenDialog({ selectedId, onDialogAction }) {
+  const [loading, setLoading] = useState(false);
   const [open, setOpen] = React.useState(false);
   const [dialogSelectedId, setDialogSelectedId] = useState(null);
+  const navigate = useNavigate();
+
   // IMAGE URL AND IMAGE STATE
   const [images, setImages] = useState([]);
   const [imageURLs, setImageURLs] = useState([]);
-
-  // DIALOGO FUNCTIONS
-
-  // USEEFFECT FOR IMAGE HANDLER
-
-  // Rest of your component code...
-  useEffect(() => {
-    const newImageURLs = [];
-    images.forEach((image) => newImageURLs.push(URL.createObjectURL(image)));
-    setImageURLs(newImageURLs);
-    if (selectedId !== dialogSelectedId) {
-      setDialogSelectedId(selectedId);
-      console.log(dialogSelectedId);
-      console.log("received");
-
-      const fetchData = axios
-        .get(
-          `https://payroll-team9.onrender.com/api/v1/employees/${selectedId}`
-        )
-        .then((response) => {
-          // Handle successful response
-          console.log("Response:", response.data);
-          const data = response.data;
-          setEmployeeData(data);
-        })
-        .catch((error) => {
-          // Handle error
-          console.error("Error:", error);
-        });
-    }
-  }, [selectedId, dialogSelectedId, images]);
-
+  console.log(selectedId);
+  console.log(selectedId);
+  console.log(selectedId);
+  console.log(selectedId);
+  console.log("this", dialogSelectedId);
+  // CLOSE AND OPEN COMPONENT
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -97,17 +75,40 @@ export default function FullScreenDialog({ selectedId }) {
   const [salary, setSalary] = useState("");
   const [deduct, setDeduct] = useState("");
   const [bonus, setBonus] = useState("");
-  const [employeeData, setEmployeeData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    jobRole: "",
-    deducted: "",
-    phone: "",
-    wallet: "",
-    salary: "",
-    bonus: "",
-  });
+
+  // GET PREVIOUS VALUE FROM API
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://payroll-team9.onrender.com/api/v1/employees/${selectedId}`
+        );
+
+        if (isMounted) {
+          const data = response.data;
+
+          setName(data.data.firstName);
+          setLastName(data.data.lastName);
+          setJob(data.data.jobRole);
+          setEmail(data.data.email);
+          setNumber(data.data.phone);
+          setSalary(data.data.salary);
+          setDeduct(data.data.deducted);
+          setBonus(data.data.bonus);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    fetchData();
+
+    // return () => {
+    //   isMounted = false;
+    // };
+  }, [selectedId]);
 
   // INPUT EVENT HANDLE FUNCTION
 
@@ -152,6 +153,9 @@ export default function FullScreenDialog({ selectedId }) {
   };
 
   // a  Employee data object with the payload for the POST request
+
+  const finalSalary = Number(salary) - Number(deduct) + Number(bonus);
+  console.log("after ", finalSalary);
   const newData = {
     firstName: name,
     lastName: lastName,
@@ -160,19 +164,18 @@ export default function FullScreenDialog({ selectedId }) {
     deducted: deduct,
     phone: number,
     wallet: walletAdress,
-    salary: salary,
+    salary: finalSalary,
     bonus: bonus,
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setEmployeeData(newData);
-
+    setLoading(true);
     const accessToken = localStorage.getItem("accessToken");
     axios
       .put(
         `https://payroll-team9.onrender.com/api/v1/employees/${selectedId}`,
-        employeeData,
+        newData,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`, // Include the access token in the Authorization header
@@ -182,17 +185,15 @@ export default function FullScreenDialog({ selectedId }) {
       )
       .then(function (response) {
         console.log("Response:", response);
+        setLoading(false);
+        alert("Employee edited");
+        onDialogAction();
       })
       .catch(function (error) {
         console.error("Error:", error);
+        setLoading(false);
       });
   };
-  // DYNAMIC NAVBAR TITLE
-  const title = "ADD EMPLOYEE";
-
-  // RETURN STATEMENT AND JSX CODE
-
-  const data = "add employee";
 
   return (
     <div>
@@ -200,6 +201,12 @@ export default function FullScreenDialog({ selectedId }) {
         variant="outlined"
         onClick={handleClickOpen}
         className={styles.edit_container}
+        sx={{
+          border: "none",
+          "&:hover": {
+            border: "none",
+          },
+        }}
       >
         <BorderColorIcon className={styles.edit_btn} />
       </Button>
@@ -209,7 +216,7 @@ export default function FullScreenDialog({ selectedId }) {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <AppBar sx={{ position: "relative" }}>
+        <AppBar sx={{ position: "relative", backgroundColor: "#8440ba" }}>
           <Toolbar>
             <IconButton
               edge="start"
@@ -227,8 +234,14 @@ export default function FullScreenDialog({ selectedId }) {
             </Button>
           </Toolbar>
         </AppBar>
+
         <div className={styles.form_container}>
           <form className={styles.form} onSubmit={handleSubmit}>
+            {loading && (
+              <div className={styles.loader}>
+                <BeatLoader color="#8440ba" />
+              </div>
+            )}
             <div className={styles.employee_img}>
               <div
                 className={styles.employee_img_container}
@@ -260,7 +273,7 @@ export default function FullScreenDialog({ selectedId }) {
                 <input
                   type="text"
                   placeholder="First Name"
-                  value={employeeData.firstName}
+                  value={name}
                   onChange={handleNameChange}
                 />
               </label>
@@ -270,7 +283,7 @@ export default function FullScreenDialog({ selectedId }) {
                 <input
                   type="text"
                   placeholder="Last Name"
-                  value={employeeData.lastName}
+                  value={lastName}
                   onChange={handleLastNameChange}
                 />
               </label>
@@ -280,7 +293,7 @@ export default function FullScreenDialog({ selectedId }) {
                 <input
                   type="text"
                   placeholder="e.g Private Limited"
-                  value={employeeData.jobRole}
+                  value={job}
                   onChange={handleJobChange}
                 />
               </label>
@@ -290,7 +303,7 @@ export default function FullScreenDialog({ selectedId }) {
                 <input
                   type="text"
                   placeholder="Email@gmail.com"
-                  value={employeeData.email}
+                  value={email}
                   onChange={handleEmailChange}
                 />
               </label>
@@ -300,7 +313,7 @@ export default function FullScreenDialog({ selectedId }) {
                 <input
                   type="number"
                   placeholder="+234"
-                  value={employeeData.phone}
+                  value={number}
                   onChange={handleNumberChange}
                 />
               </label>
@@ -308,9 +321,9 @@ export default function FullScreenDialog({ selectedId }) {
               <label className={styles.label}>
                 Wallet Address:
                 <input
-                  type="number"
+                  type="text"
                   placeholder="Number"
-                  value={employeeData.wallet}
+                  value={walletAdress}
                   onChange={handleWalletAdressChange}
                 />
               </label>
@@ -320,7 +333,7 @@ export default function FullScreenDialog({ selectedId }) {
                 <input
                   type="number"
                   placeholder="$ 0"
-                  value={employeeData.salary}
+                  value={salary}
                   onChange={handleSalaryChange}
                 />
               </label>
@@ -330,7 +343,7 @@ export default function FullScreenDialog({ selectedId }) {
                 <input
                   type="number"
                   placeholder="$ 0"
-                  value={employeeData.deducted}
+                  value={deduct}
                   onChange={handleDeductChange}
                 />
               </label>
@@ -340,7 +353,7 @@ export default function FullScreenDialog({ selectedId }) {
                 <input
                   type="number"
                   placeholder="$ 0"
-                  value={employeeData.bonus}
+                  value={bonus}
                   onChange={handleBonusChange}
                 />
               </label>

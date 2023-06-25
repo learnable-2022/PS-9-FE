@@ -7,7 +7,7 @@ $white: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-left: 7rem;
   width: 60vw;
   padding: 1rem;
@@ -17,6 +17,7 @@ $white: #ffffff;
   p {
     margin-top: 5px;
     font-weight: 500;
+    color: #fb9b14;
   }
   .wallet_details {
     display: flex;
@@ -79,11 +80,19 @@ $white: #ffffff;
     border-radius: 5px;
     width: 10rem;
     margin-left: 2rem;
+    padding: 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: #410474;
+    }
 
-    p {
+    a {
       font-size: 12px;
       font-weight: 400;
-      padding: 12px;
+
+      text-decoration: none;
+      cursor: pointer;
+      color: white;
     }
   }
 
