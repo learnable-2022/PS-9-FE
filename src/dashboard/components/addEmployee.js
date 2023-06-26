@@ -167,7 +167,9 @@ export default function AddEmployee({ onDataReceived }) {
       <p className={styles.warning}> {warning} </p>
       <div className={styles.form_container}>
         {isLoading ? (
-          <BeatLoader color="#8440ba" />
+          <div classname={styles.loadder}>
+            <BeatLoader color="#8440ba" />
+          </div>
         ) : (
           <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.employee_img}>

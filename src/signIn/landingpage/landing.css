@@ -18,6 +18,7 @@ html {
   width: 100%;
   z-index: 100;
   box-shadow: -5px 10px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
 }
 .nav-con {
   display: flex;
@@ -35,11 +36,20 @@ html {
   justify-content: center;
   align-items: center;
   color: #8440ba;
+  cursor: pointer;
 }
 .nav2 {
   display: flex;
   gap: 2rem;
+  cursor: pointer;
 }
+.getstartedlink {
+  margin-left: 1px;
+  border: 1px solid #8440ba;
+  width: 7rem;
+  padding: 5px;
+}
+
 .mobile-nav {
   display: none;
 }
@@ -52,7 +62,7 @@ a {
 
 .headBold {
   font-weight: bolder;
-  margin-top: 2rem;
+  margin-top: 10rem;
 }
 .btn-nav {
   border: 1px solid #8440ba;
@@ -64,7 +74,7 @@ a {
   filter: drop-shadow(1px 1px 2px #8440ba);
 }
 .body {
-  height: 60vh;
+  height: 99vh;
   background-position: center;
   background-size: cover;
   color: white;
@@ -105,6 +115,10 @@ a {
   padding: 1rem;
   padding-top: 2rem;
 }
+
+.card p {
+  margin-top: 1rem;
+}
 .card:hover {
   animation: slide 2s ease-in-out 0.5s infinite alternate;
 }
@@ -134,6 +148,14 @@ a {
   color: #8440ba;
   padding-bottom: 3rem;
   font-weight: 900;
+  font-size: 25px;
+}
+.works-text h5 {
+  font-size: 18px;
+}
+.works-text p {
+  font-size: 18px;
+  margin-top: 10px;
 }
 .works-text:nth-child(2) {
   padding-left: 0;

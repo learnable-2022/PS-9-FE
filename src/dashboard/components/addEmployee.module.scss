@@ -7,7 +7,13 @@ body {
 
 .warning {
   margin-top: 1rem;
+  text-align: center;
   color: red;
+}
+.loadder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .addContainer {
   margin-top: 0.5rem;

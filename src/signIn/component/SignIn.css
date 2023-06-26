@@ -17,6 +17,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 0;
+  text-align: center;
 }
 .signIn-form > label {
   color: white;
@@ -36,6 +37,7 @@
   background-color: #ffffff;
   cursor: pointer;
   transition: all 0.5s ease;
+  text-align: center;
 }
 
 .signIn-btn:hover {

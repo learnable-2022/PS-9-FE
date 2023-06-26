@@ -69,10 +69,14 @@ const LandingPage = () => {
                     <RiArrowDropDownLine />
                   </i>
                 </li>
+                <li className="getstartedlink">
+                  <a>
+                    {" "}
+                    <Link to="/getstarted"> Get Started</Link>
+                  </a>
+                </li>
               </ul>
             </nav>
-
-            <Link to="/getstarted"> Get Started</Link>
 
             <div className="mobile-nav" onClick={showNav}>
               {close ? <RiCloseLine /> : <FiMenu />}
@@ -86,7 +90,7 @@ const LandingPage = () => {
         <div className="container">
           <h2 className="headBold">
             Simplify Payroll <br />
-            with Wagewise
+            With Wagewise
           </h2>
           <p>
             Streamline your payroll process and pay employees <br />
